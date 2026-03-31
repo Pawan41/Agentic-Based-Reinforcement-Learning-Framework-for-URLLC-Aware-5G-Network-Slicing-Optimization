@@ -1,153 +1,154 @@
-# Network slicing environment
+# 📡 Agentic-Based Reinforcement Learning Framework for URLLC-Aware 5G Network Slicing Optimization
 
-## My Contributions
+---
 
-This project extends the original network slicing environment by introducing an **Agentic Reinforcement Learning framework with URLLC-aware optimization**.
+## Overview
 
-### Key Enhancements:
-- ✅ Designed an **Agent-based decision-making system** for dynamic resource allocation
-- ✅ Implemented **URLLC slice support** with strict latency and reliability constraints
-- ✅ Developed a **custom reward function** prioritizing SLA satisfaction for URLLC traffic
-- ✅ Improved **resource allocation efficiency (PRB allocation)** across multiple slices
-- ✅ Integrated **real-time decision pipeline** using agentic workflow
-- ✅ Added performance evaluation metrics:
-  - SLA violation rate
-  - Resource utilization
-  - Latency-aware scheduling
+This project extends an existing reinforcement learning-based network slicing environment by introducing an **Agentic RL framework** with **URLLC-aware optimization**.
 
-### Implementing Algorithms.......
-- PPO (Proximal Policy Optimization)
+It is based on the original work:
 
+> *Model-Based Reinforcement Learning with Kernels for Resource Allocation in RAN Slices* (IEEE TWC 2023)
 
-## Description
+---
 
-This project is an extension of the original work:
-**"Model-Based Reinforcement Learning with Kernels for Resource Allocation in RAN Slices" (IEEE TWC 2023)**.
+## 📖 Base Work (Original System)
 
-🚀 In this work, I enhanced the existing network slicing environment by introducing an **Agentic Reinforcement Learning framework** with **URLLC-aware optimization**.
+The original repository provides:
 
-### Key Improvements:
+- A **5G network slicing simulation environment**
+- OpenAI Gym-based interface for RL agents
+- Resource allocation across multiple slices:
+  - eMBB (enhanced Mobile Broadband)
+  - mMTC (massive Machine Type Communication)
 
-* Integrated an **agent-based decision-making system** for dynamic resource allocation
-* Added **URLLC slice support** with strict latency and reliability constraints
-* Implemented **PPO-based reinforcement learning** for intelligent PRB allocation
-* Designed a **custom reward function** focused on SLA satisfaction and latency minimization
-* Improved system performance in terms of:
+### Algorithms Included:
+- KBRL (Kernel-Based Reinforcement Learning)
+- DQN (Deep Q-Network)
+- NAF (Normalized Advantage Function)
 
-  * Reduced SLA violations
-  * Better resource utilization
-  * Adaptive behavior under varying traffic conditions
+### Objective:
+Efficient allocation of **Physical Resource Blocks (PRBs)** while satisfying **Service Level Agreements (SLAs)**.
 
-This project demonstrates how **Agentic AI + Reinforcement Learning** can be applied to optimize next-generation **5G network slicing systems**.
+---
 
+## My Contributions (Enhancements)
 
-## Acknowledgements
+This project significantly extends the original system with the following improvements:
 
-This work is part of project [AriSe2](https://arise.upct.es) supported by Grant PID2020-116329GB-C22 funded by MICIU / AEI / 10.13039/501100011033
+### Agentic Reinforcement Learning
+- Designed an **agent-based decision-making system**
+- Enabled dynamic and intelligent resource allocation
 
-<img src="img/MICINN_Gob_Web_AEI_2.jpg" align="center" width="40%"/>
+### 📶 URLLC-Aware Optimization
+- Added **URLLC slice support**
+- Modeled:
+  - Ultra-low latency constraints
+  - High reliability requirements
 
-## How to use it
+### 🤖 PPO Implementation
+- Integrated **Proximal Policy Optimization (PPO)**
+- Improved stability and adaptability of learning
+
+### Custom Reward Function
+- Designed reward based on:
+  - SLA satisfaction
+  - Latency minimization
+  - Resource efficiency
+
+### 📊 Performance Improvements
+- Reduced SLA violations
+- Improved PRB utilization
+- Better adaptability under dynamic traffic conditions
+
+---
+
+## System Architecture
+
+The system follows an **Agent–Environment interaction loop**:
+
+1. Environment provides:
+   - Traffic demand per slice
+   - Available PRBs
+   - SLA requirements  
+
+2. Agent:
+   - Observes system state  
+   - Allocates PRBs using PPO policy  
+
+3. Environment:
+   - Executes allocation  
+   - Returns reward based on SLA + efficiency  
+
+4. Agent:
+   - Updates policy iteratively  
+
+---
+
+## ⚙️ Installation & Setup
 
 ### Requirements
+gym==0.15.3
+numpy==1.19.1
+pandas==0.25.2
+stable-baselines==2.10.1
+tensorflow==1.9.0
+scipy==1.5.4
+matplotlib==3.3.4
 
-The enviroment requires Open-AI gym, Numpy and Pandas packages. The RL agents are provided by stable-baselines (version 2, which uses TensorFlow), and the scripts for plotting results use scipy and matplotlib. The following versions of these packages are known to work fine with the environment:  
 
-gym==0.15.3  
-numpy==1.19.1  
-pandas==0.25.2  
-stable-baselines==2.10.1  
-tensorflow==1.9.0  
-scipy==1.5.4  
-matplotlib==3.3.4  
 
-To run the NAF agent, Keras and Keras-RL are also required. The tested versions are:  
-Keras==2.2.1  
-keras-rl==0.4.2  
+### Installation Steps
 
-It is recommended to use a python virtual environment to install the above packages.
-
-### Instalation
-
-1. Clone or download the repository in your local machine
-
-2. Open a terminal window and (optionally) activate the virtual environment
-
-3. Go to the gym-ran_slice folder in the terminal window 
-
-4. Once in the gym-ran_slice folder run:
-```python
+```bash
+git clone https://github.com/Pawan41/Agentic-Based-Reinforcement-Learning-Framework-for-URLLC-Aware-5G-Network-Slicing-Optimization
+cd gym-ran_slice
 pip install -e .
 ```
 
-### Experiment scripts
+### Experiments
 
-There are four scripts for launching simulation experiments:
+Scripts available:
 
-- experiments_rl.py: runs the experiments with the RL agents of stable-baselines  
-- experiments_kbrl.py: runs the experiments with the proposed KBRL algorithm  
-- experiments_naf.py: runs the experiments with the NAF algorithm provided by keras-rl  
-- experiment_dqn.py: runs the experiments with the DQN algorithm provided by stable-baselines  
+- experiments_rl.py → RL agents (PPO, DQN)
+- experiments_kbrl.py → KBRL algorithm
+- experiments_naf.py → NAF agent
+- experiment_dqn.py → DQN agent
 
-And four scripts for plotting results:  
+## Results
 
-- plot_results.py: plots the learning curves of the algorithms in the scenario given as a input (e.g. ```python plot_results.py 0``` plots paper's figure 3)  
-- plot_trained_results.py: plots the performance metrics during the inference phase of the MBRL algorithms (paper's figure 6)  
-- plot_adjustment_results.py: plots the adjustment rate of KBRL (paper's figure 7)  
-- plot_accuracy_results.py: plots the accuracy of KBRL (paper's figure 8)
-- plot_oracle_results.py: plots the performance metrics of KBRL, DNQ, NAF and ORACLE (paper's figure 10)  
+### Key Observations:
+- ✅ URLLC slice achieves lower SLA violations
+- ✅ Better latency-aware allocation
+- ✅ Improved PRB efficiency
 
-Figure 3 of the paper showing the performance curves for a scenario with 5 eMMB RAN slices, where KBRL attains the lowest rate of SLA violations while using less resources than model-free RL algorithms:
-<img src="figures/subplots_0.png" align="center" width="100%"/>  
 
-## Project structure
 
-The following files implement the environment:  
+## Project Structure
 
-- node_b.py  
-- slice_ran.py  
-- slice_l1.py  
-- channel_models.py  
-- traffic_generators.py  
-- schedulers.py  
-- ./gym-ran_slice/gym_ran_slice/ran_slice.py  
+### Environment
+- node_b.py
+- slice_ran.py
+- slice_l1.py
+- channel_models.py
+- traffic_generators.py
+- schedulers.py
+- gym_ran_slice/ran_slice.py
 
-The KBRL agent is implemented in:
-
+  
+### Algorithms
 - kbrl_control.py
-- ./algorithms/kernel.py
-- ./algorithms/projectron.py
+- algorithms/kernel.py
+- algorithms/projectron.py
 
-The following files are required to build the experiments:
 
-- scenario_creator.py: creates the environments and the KBRL agents  
-- wrapper.py: allows the interaction with stable-baselines  
-- naf_agent_creator.py: creates NAF agents   
-
-## How to cite this work
-
-The code of this repository:
-
-@misc{net_slice,  
-    title={Network slicing environment},  
-    author={Juan J. Alcaraz},  
-    howpublished = {\url{https://github.com/jjalcaraz-upct/network-slicing/}},  
-    year={2022}  
-}
-
-The paper where KBRL was presented:
-
-@misc{alcaraz2022,
-  author = {Alcaraz, Juan J. and Losilla, Fernando and Zanella, Andrea and Zorzi, Michele},  
-  title = title = {Model-{Based} {Reinforcement} {Learning} {With} {Kernels} for {Resource} {Allocation} in {RAN} {Slices}},,   
-  publisher = {IEEE},  
-  journal = {IEEE Transactions on Wireless Communications},  
-  year = {2023},
-  month = {1},
-  pages = {486--501},
-  volume = {22},
-}
-
-## Licensing information
-
-This code is released under the MIT lisence.
+### References
+- Alcaraz et al., Model-Based Reinforcement Learning with Kernels for Resource Allocation in RAN Slices, IEEE TWC 2023
+- OpenAI Gym
+- Stable-Baselines
+  
+Custom Enhancements (My Work)
+- PPO integration
+- URLLC slice logic
+- Modified reward function
+- Agentic workflow implementation

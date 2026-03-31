@@ -88,15 +88,16 @@ The system follows an **Agent–Environment interaction loop**:
 ## ⚙️ Installation & Setup
 
 ### Requirements
-gym==0.15.3
-numpy==1.19.1
-pandas==0.25.2
-stable-baselines==2.10.1
-tensorflow==1.9.0
-scipy==1.5.4
-matplotlib==3.3.4
+- gym==0.15.3
+- numpy==1.19.1
+- pandas==0.25.2
+- stable-baselines==2.10.1
+- tensorflow==1.9.0
+- scipy==1.5.4
+- matplotlib==3.3.4
 
 
+---
 
 ### Installation Steps
 
@@ -105,15 +106,18 @@ git clone https://github.com/Pawan41/Agentic-Based-Reinforcement-Learning-Framew
 cd gym-ran_slice
 pip install -e .
 ```
+---
 
-### Experiments
+## Experiments
 
-Scripts available:
+### Scripts available:
 
 - experiments_rl.py → RL agents (PPO, DQN)
 - experiments_kbrl.py → KBRL algorithm
 - experiments_naf.py → NAF agent
 - experiment_dqn.py → DQN agent
+
+---
 
 ## Results
 
@@ -122,7 +126,7 @@ Scripts available:
 - ✅ Better latency-aware allocation
 - ✅ Improved PRB efficiency
 
-
+---
 
 ## Project Structure
 
@@ -148,6 +152,7 @@ Custom Enhancements (My Work)
 - Modified reward function
 - Agentic workflow implementation
 
+---
 
 ### References
 - Alcaraz et al., Model-Based Reinforcement Learning with Kernels for Resource Allocation in RAN Slices, IEEE TWC 2023

@@ -1,5 +1,25 @@
 # Network slicing environment
 
+## My Contributions
+
+This project extends the original network slicing environment by introducing an **Agentic Reinforcement Learning framework with URLLC-aware optimization**.
+
+### Key Enhancements:
+- ✅ Designed an **Agent-based decision-making system** for dynamic resource allocation
+- ✅ Implemented **URLLC slice support** with strict latency and reliability constraints
+- ✅ Developed a **custom reward function** prioritizing SLA satisfaction for URLLC traffic
+- ✅ Improved **resource allocation efficiency (PRB allocation)** across multiple slices
+- ✅ Integrated **real-time decision pipeline** using agentic workflow
+- ✅ Added performance evaluation metrics:
+  - SLA violation rate
+  - Resource utilization
+  - Latency-aware scheduling
+
+### Algorithms Used:
+- PPO (Proximal Policy Optimization)
+- Reinforcement Learning (Gym-based environment)
+
+
 ## Description
 
 Source code of the paper "[Model-Based Reinforcement Learning with Kernels for Resource Allocation in RAN Slices](https://doi.org/10.1109/TWC.2022.3195570)" published in IEEE Transactions on Wireless Communications. The code provides a network slicing environment where time-frequency resources must be allocated among several network slices in consecutive decision stages. The environtment implements the OpenAI Gym https://github.com/openai/gym interface and can interact Stable-Baselines RL agents https://github.com/hill-a/stable-baselines and Keras-RL agents https://github.com/keras-rl/keras-rl. Additionally, the code includes a novel model-based RL control algorithm (KBRL). At each decision stage, the control agent observes a set of variables describing the state of the system. Based on these observations, the agent makes a resource allocation decision specifying the resource blocks, RBs, assigned to each slice for a number of upcoming radio frames (observation period). At the end of each observation period, the agent receives a signal indicating the fulfillment or violation of the service level agreement (SLA) for each slice during that period. The end of an observation period determines the start of a new decision stage. The objective of the control agent is to allocate the resources efficiently (i.e. use the minimum required number of RBs) while statisfying the SLAs of the network slices.

@@ -141,14 +141,15 @@ Scripts available:
 - algorithms/kernel.py
 - algorithms/projectron.py
 
-
-### References
-- Alcaraz et al., Model-Based Reinforcement Learning with Kernels for Resource Allocation in RAN Slices, IEEE TWC 2023
-- OpenAI Gym
-- Stable-Baselines
   
 Custom Enhancements (My Work)
 - PPO integration
 - URLLC slice logic
 - Modified reward function
 - Agentic workflow implementation
+
+
+### References
+- Alcaraz et al., Model-Based Reinforcement Learning with Kernels for Resource Allocation in RAN Slices, IEEE TWC 2023
+- OpenAI Gym
+- Stable-Baselines

@@ -15,6 +15,7 @@ from itertools import count
 from node_b import NodeB
 from slice_l1 import SliceL1eMBB, SliceL1mMTC
 from slice_ran import SliceRANmMTC, SliceRANeMBB
+from slice_ran_urllc import SliceRANURLLC  # New
 from schedulers import ProportionalFair
 from channel_models import SINRSelectiveFading, MCSCodeset
 from kbrl_control import KBRL_Control, Learner
@@ -32,7 +33,8 @@ scenario_1 = {
 scenario_2 = {
     'n_prbs': 150,
     'n_embb': 3,
-    'n_mmtc': 2
+    'n_mmtc': 2,
+    'n_urllc': 1    # New
 }
 
 scenario_3 = {
@@ -109,6 +111,8 @@ def create_env(rng, n, slots_per_step = 50, propagation_type = 'macro_cell_urban
     n_prbs = sc['n_prbs']
     n_embb = sc['n_embb']
     n_mmtc = sc['n_mmtc']
+    
+    n_urllc = sc.get('n_urllc', 0) # New Line Added
 
     # -------------------- eMBB normalization constants ----------------------
 
@@ -141,6 +145,10 @@ def create_env(rng, n, slots_per_step = 50, propagation_type = 'macro_cell_urban
     def new_slice_embb(id, rng, user_counter):
         return SliceRANeMBB(rng, user_counter, id, SLA_embb, CBR_description, VBR_description, state_variables_embb, norm_const_embb, slots_per_step)
 
+    # New Function is Added Here 
+    def new_slice_urllc(id, rng):
+        return SliceRANURLLC(rng, id)
+    
     # ------------------- environment creation ------------------------
 
     snr_generator = SINRSelectiveFading(rng, propagation_type, n_prbs = n_prbs)
@@ -164,7 +172,13 @@ def create_env(rng, n, slots_per_step = 50, propagation_type = 'macro_cell_urban
             slices_ran_mmtc = [new_slice_mmtc(id, rng)]
             slice_l1_mmtc = SliceL1mMTC(5, slices_ran_mmtc)
             slices_l1.append(slice_l1_mmtc)
-
+            
+            
+        # -------- URLLC slice --------
+        slices_ran_urllc = [new_slice_urllc(999, rng)]
+        slice_l1_urllc = SliceL1mMTC(5, slices_ran_urllc)
+        slices_l1.append(slice_l1_urllc)
+        
     else: # slices are multiplexed in the L1 (the scheduler should handle ues from different slices) 
 
         slices_ran_embb = [new_slice_embb(id, rng, user_counter) for id in range(n_embb)]

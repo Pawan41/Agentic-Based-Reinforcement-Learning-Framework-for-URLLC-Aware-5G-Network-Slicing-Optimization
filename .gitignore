@@ -1,0 +1,36 @@
+# Virtual Environment
+venv/
+env/
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# Dataset & large files (optional, if you don't want to push these)
+datasets/
+*.csv
+*.h5
+*.pkl
+*.npy
+*.npz
+
+# Model weights & results (optional)
+figures/
+results/
+img/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

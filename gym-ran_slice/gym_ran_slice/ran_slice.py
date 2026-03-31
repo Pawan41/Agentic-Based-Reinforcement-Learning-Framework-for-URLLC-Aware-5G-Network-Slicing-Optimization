@@ -43,12 +43,30 @@ class RanSlice(gym.Env):
         # apply the action
         state, info = self.node_b.step(action)
         total_violations = info['violations'].sum()
+        
+        print("----- Checking slices -----")
+
+        # ADD URLLC VIOLATIONS INTO TOTAL
+        for slice_l1 in self.node_b.slices_l1:
+            for slice_ran in slice_l1.slices_ran:
+
+                slice_type = getattr(slice_ran, "type", "UNKNOWN")
+                print("Slice type:", slice_type)
+
+                if slice_type == "urllc":
+                    violation = slice_ran.compute_reward()
+
+                    if violation > 0:
+                        print("URLLC SLA VIOLATION")
+                        total_violations += 1   # integrate properly
+
+        # update info
         info['total_violations'] = total_violations
+
+        # reward calculation
         if total_violations > 0:
-            # if SLA not fulfilled the reward is negative
             reward = -1 * self.penalty * total_violations
         else:
-            # if SLA fulfilled the reward is the amount of free resources
             reward = max(0, self.node_b.n_prbs - action.sum())
 
         return state, float(reward), False, info

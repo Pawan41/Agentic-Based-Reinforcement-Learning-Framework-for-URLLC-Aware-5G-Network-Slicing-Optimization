@@ -15,7 +15,7 @@ from itertools import count
 from node_b import NodeB
 from slice_l1 import SliceL1eMBB, SliceL1mMTC
 from slice_ran import SliceRANmMTC, SliceRANeMBB
-from slice_ran_urllc import SliceRANURLLC  # New
+from slice_ran_urllc import SliceRANURLLC  # Add New Into Existing System 
 from schedulers import ProportionalFair
 from channel_models import SINRSelectiveFading, MCSCodeset
 from kbrl_control import KBRL_Control, Learner
@@ -34,7 +34,7 @@ scenario_2 = {
     'n_prbs': 150,
     'n_embb': 3,
     'n_mmtc': 2,
-    'n_urllc': 1    # New
+    'n_urllc': 1    # Add New Into Existing System
 }
 
 scenario_3 = {

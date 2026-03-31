@@ -15,9 +15,8 @@ This project extends the original network slicing environment by introducing an 
   - Resource utilization
   - Latency-aware scheduling
 
-### Algorithms Used:
+### Implementing Algorithms.......
 - PPO (Proximal Policy Optimization)
-- Reinforcement Learning (Gym-based environment)
 
 
 ## Description
